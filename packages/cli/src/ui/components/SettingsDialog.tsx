@@ -44,6 +44,7 @@ import {
 import { debugLogger } from '@google/gemini-cli-core';
 import { keyMatchers, Command } from '../keyMatchers.js';
 import type { Config } from '@google/gemini-cli-core';
+import { shouldDisableAlternateBufferByDefault } from '../../utils/terminalEnvironment.js';
 
 interface SettingsDialogProps {
   settings: LoadedSettings;
@@ -849,6 +850,15 @@ export function SettingsDialog({
             settings,
           );
 
+          let warningMessage: string | undefined;
+          if (
+            item.value === 'ui.useAlternateBuffer' &&
+            shouldDisableAlternateBufferByDefault() &&
+            !settings.merged.ui?.forceAlternateBuffer
+          ) {
+            warningMessage = '(disabled due to your terminal)';
+          }
+
           return (
             <React.Fragment key={item.value}>
               <Box flexDirection="row" alignItems="center">
@@ -868,6 +878,12 @@ export function SettingsDialog({
                     {item.label}
                     {scopeMessage && (
                       <Text color={theme.text.secondary}> {scopeMessage}</Text>
+                    )}
+                    {warningMessage && (
+                      <Text color={theme.status.warning}>
+                        {' '}
+                        {warningMessage}
+                      </Text>
                     )}
                   </Text>
                 </Box>
