@@ -35,6 +35,7 @@ export default tseslint.config(
       'package/bundle/**',
       '.integration-tests/**',
       'dist/**',
+      'src/dataconnect-generated/**',
     ],
   },
   eslint.configs.recommended,
