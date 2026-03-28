@@ -100,8 +100,7 @@ export interface Tool<
 export abstract class BaseTool<
   TParams = unknown,
   TResult extends ToolResult = ToolResult,
-> implements Tool<TParams, TResult>
-{
+> implements Tool<TParams, TResult> {
   /**
    * Creates a new instance of BaseTool
    * @param name Internal name of the tool (used for API calls)

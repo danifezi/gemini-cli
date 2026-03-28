@@ -113,9 +113,8 @@ describe('runNonInteractive', () => {
       },
     };
 
-    const { executeToolCall: mockCoreExecuteToolCall } = await import(
-      '@google/gemini-cli-core'
-    );
+    const { executeToolCall: mockCoreExecuteToolCall } =
+      await import('@google/gemini-cli-core');
     vi.mocked(mockCoreExecuteToolCall).mockResolvedValue({
       callId: 'fc1',
       responseParts: [toolResponsePart],
@@ -167,9 +166,8 @@ describe('runNonInteractive', () => {
       },
     };
 
-    const { executeToolCall: mockCoreExecuteToolCall } = await import(
-      '@google/gemini-cli-core'
-    );
+    const { executeToolCall: mockCoreExecuteToolCall } =
+      await import('@google/gemini-cli-core');
     vi.mocked(mockCoreExecuteToolCall).mockResolvedValue({
       callId: 'fcError',
       responseParts: [errorResponsePart],
@@ -240,9 +238,8 @@ describe('runNonInteractive', () => {
       },
     };
 
-    const { executeToolCall: mockCoreExecuteToolCall } = await import(
-      '@google/gemini-cli-core'
-    );
+    const { executeToolCall: mockCoreExecuteToolCall } =
+      await import('@google/gemini-cli-core');
     vi.mocked(mockCoreExecuteToolCall).mockResolvedValue({
       callId: 'fcNotFound',
       responseParts: [errorResponsePart],
@@ -313,9 +310,8 @@ describe('runNonInteractive', () => {
     // Config with a max turn of 1
     vi.mocked(mockConfig.getMaxSessionTurns).mockReturnValue(1);
 
-    const { executeToolCall: mockCoreExecuteToolCall } = await import(
-      '@google/gemini-cli-core'
-    );
+    const { executeToolCall: mockCoreExecuteToolCall } =
+      await import('@google/gemini-cli-core');
     vi.mocked(mockCoreExecuteToolCall).mockResolvedValue({
       callId: 'fcLoop',
       responseParts: [toolResponsePart],
